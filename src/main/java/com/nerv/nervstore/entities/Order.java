@@ -3,7 +3,12 @@ package com.nerv.nervstore.entities;
 import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
+
 
 @Entity
 @Table(name = "tb_Order")
@@ -20,6 +25,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
 
     public Order() {
@@ -62,6 +70,14 @@ public class Order {
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public void setItems(Set<OrderItem> items) {
+        this.items = items;
+    }
+
+   public List<Product> getProducts(){
+        return items.stream().map(x -> x.getProduct()).toList();
     }
 
     @Override

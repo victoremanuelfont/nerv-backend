@@ -2,7 +2,10 @@ package com.nerv.nervstore.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_Product")
@@ -18,6 +21,9 @@ public class Product {
     private Double price;
     private String imgUrl;
     private Integer stockQuantity;
+
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Product() {
     }
@@ -77,6 +83,14 @@ public class Product {
 
     public void setStockQuantity(Integer stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
+    }
+
+    public List<Order> getOrders(){
+        return items.stream().map(x -> x.getOrder()).toList();
     }
 
     @Override
