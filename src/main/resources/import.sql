@@ -1,14 +1,14 @@
 -- 1. Inserindo Usuários (TB_USER)
-INSERT INTO tb_user (id, name, email, password) VALUES (1, 'Shinji Ikari', 'shinji@nerv.com', '123456');
-INSERT INTO tb_user (id, name, email, password) VALUES (2, 'Asuka Langley', 'asuka@nerv.com', '123456');
-INSERT INTO tb_user (id, name, email, password) VALUES (3, 'Rei Ayanami', 'rei@nerv.com', '123456');
+INSERT INTO tb_user ( name, email, password) VALUES ('Shinji Ikari', 'shinji@nerv.com', '123456');
+INSERT INTO tb_user ( name, email, password) VALUES ('Asuka Langley', 'asuka@nerv.com', '123456');
+INSERT INTO tb_user ( name, email, password) VALUES ('Rei Ayanami', 'rei@nerv.com', '123456');
 
 -- 2. Inserindo Produtos (TB_PRODUCT)
 -- Os nomes das colunas seguem o padrão snake_case (imgUrl -> img_url)
-INSERT INTO tb_product (id, name, description, price, img_url, stock_quantity) VALUES (1, 'Eva Unit-01 Model', 'Action figure detalhado do Eva 01', 450.00, 'url_img_01', 10);
-INSERT INTO tb_product (id, name, description, price, img_url, stock_quantity) VALUES (2, 'Nerv Coffee Mug', 'Caneca oficial da Nerv', 50.00, 'url_img_02', 100);
-INSERT INTO tb_product (id, name, description, price, img_url, stock_quantity) VALUES (3, 'Plug Suit Interface', 'Interface de conexão neural', 1200.00, 'url_img_03', 5);
-INSERT INTO tb_product (id, name, description, price, img_url, stock_quantity) VALUES (4, 'Progressive Knife', 'Réplica da faca progressiva', 300.00, 'url_img_04', 15);
+INSERT INTO tb_product ( name, description, price, img_url, stock_quantity) VALUES ('Eva Unit-01 Model', 'Action figure detalhado do Eva 01', 450.00, 'url_img_01', 10);
+INSERT INTO tb_product ( name, description, price, img_url, stock_quantity) VALUES ('Nerv Coffee Mug', 'Caneca oficial da Nerv', 50.00, 'url_img_02', 100);
+INSERT INTO tb_product ( name, description, price, img_url, stock_quantity) VALUES ('Plug Suit Interface', 'Interface de conexão neural', 1200.00, 'url_img_03', 5);
+INSERT INTO tb_product ( name, description, price, img_url, stock_quantity) VALUES ('Progressive Knife', 'Réplica da faca progressiva', 300.00, 'url_img_04', 15);
 
 -- 3. Inserindo Pedidos (TB_ORDER)
 INSERT INTO tb_order (id, moment, order_status, client_id) VALUES (1, '2025-06-20T19:53:07Z', 1, 1); -- Pedido do Shinji
