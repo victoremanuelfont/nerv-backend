@@ -3,6 +3,7 @@ package com.nerv.nervstore.services;
 import com.nerv.nervstore.dto.ProductDTO;
 import com.nerv.nervstore.entities.Product;
 import com.nerv.nervstore.repository.ProductRepository;
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,15 +30,27 @@ public class ProductService {
     @Transactional
     public ProductDTO insert(ProductDTO dto){
         Product entity = new Product();
-        entity.setName(dto.getName());
-        entity.setId(dto.getId());
-        entity.setDescription(dto.getDescription());
-        entity.setPrice(dto.getPrice());
-        entity.setStockQuantity(dto.getStockQuantity());
-
+        copyDtoToEntity(dto, entity);
         entity = repository.save(entity);
         return new ProductDTO(entity);
     }
+
+    @Transactional
+    public ProductDTO update(Long id, ProductDTO dto){
+        Product entity = repository.getReferenceById(id);
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity);
+        return new ProductDTO(entity);
+    }
+
+    private void copyDtoToEntity(ProductDTO dto, Product entity){
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setStockQuantity(dto.getStockQuantity());
+    }
+
+
 
 
 
