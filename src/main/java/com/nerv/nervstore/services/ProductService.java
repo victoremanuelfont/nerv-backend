@@ -3,6 +3,7 @@ package com.nerv.nervstore.services;
 import com.nerv.nervstore.dto.ProductDTO;
 import com.nerv.nervstore.entities.Product;
 import com.nerv.nervstore.repository.ProductRepository;
+import com.nerv.nervstore.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ public class ProductService {
 
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id){
-        Product product = repository.findById(id).get();
+        Product product = repository.findById(id).orElseThrow( () -> new ResourceNotFoundException("Recurso não encontrado"));
         return new ProductDTO(product);
     }
 
