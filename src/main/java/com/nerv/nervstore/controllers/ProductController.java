@@ -4,6 +4,7 @@ import com.nerv.nervstore.dto.ProductDTO;
 import com.nerv.nervstore.entities.Product;
 import com.nerv.nervstore.repository.ProductRepository;
 import com.nerv.nervstore.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,7 +35,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto){
+    public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
