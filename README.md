@@ -1,6 +1,6 @@
-# Nerv Store Backend 🛒
+# Nerv Store Backend 
 
-API RESTful desenvolvida para o gerenciamento de um e-commerce (Nerv Store). O projeto foca nas melhores práticas de desenvolvimento backend com Java e Spring Boot, implementando um fluxo completo de CRUD, validações de dados e tratamento centralizado de exceções.
+API RESTful em desenvolvimento para o gerenciamento de um e-commerce (Nerv Store). O projeto foca nas melhores práticas de desenvolvimento backend com Java e Spring Boot, implementando um fluxo completo de CRUD, validações de dados e tratamento centralizado de exceções.
 
 ## 🛠 Tecnologias & Ferramentas
 
@@ -42,28 +42,6 @@ Sistema centralizado de tratamento de erros (`@ControllerAdvice` / Handler) para
 Garantia de integridade dos dados na entrada da API:
 * Uso de anotações como `@NotBlank`, `@Size`, `@Positive` nos DTOs.
 * Customização das mensagens de erro para o frontend, retornando lista de campos inválidos de forma estruturada.
-
-## 🚀 Como executar o projeto
-
-### Pré-requisitos
-* Java 17 ou superior instalado.
-* Maven instalado.
-
-### Passos
-1.  Clone o repositório:
-    ```bash
-    git clone [https://github.com/seu-usuario/nerv-store-backend.git](https://github.com/seu-usuario/nerv-store-backend.git)
-    ```
-2.  Acesse a pasta do projeto:
-    ```bash
-    cd nerv-store-backend
-    ```
-3.  Execute a aplicação:
-    ```bash
-    mvn spring-boot:run
-    ```
-4.  A API estará disponível em `http://localhost:8080`.
-5.  O console do H2 pode ser acessado em `http://localhost:8080/h2-console` (Verifique o `application.properties` para credenciais).
 
 ## 📚 Endpoints Principais
 
